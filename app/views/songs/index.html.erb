@@ -1,0 +1,7 @@
+<section id="audio"> 
+</section>
+<ul>
+	<%@songs.each do |song| %>
+	<li><%= link_to "HTML5 Audio", download_url_for(song.key), :class => "html5" %></li>
+	<% end %>
+</ul>
