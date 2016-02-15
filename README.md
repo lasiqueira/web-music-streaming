@@ -12,7 +12,7 @@ Tech stack:
 
 * JQuery
 
-* CSS
+* HTML/CSS
 
 * Amazon Webservices (S3)
 
