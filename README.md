@@ -1,4 +1,13 @@
 ##SISINTTCC 
-### This project sonsists of a music streaming web app coded in Ruby and Ruby on Rails. ###
+This project sonsists of a music streaming web app.
 
-The objective of this project is for learning and using as a school project.
+Tech stack:
+* Ruby
+* Ruby on Rails
+* Javascript
+* JQuery
+* CSS
+* Amazon Webservices (S3)
+* Sqlite/Postgresql
+
+The objective of this project is learning and using as a school project.
