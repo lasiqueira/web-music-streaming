@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class GenreTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should not save without name" do
+  	genre = Genre.new
+  	assert_not genre.save
+  end
 end
