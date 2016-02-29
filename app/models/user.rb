@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-	validates :login, :password, presence: true
+	has_secure_password
+	validates :login, presence: true
 	validates :login, uniqueness: true
 	has_many :playlists
 

@@ -29,3 +29,5 @@ songs = Song.create([{name: 'I Know Where You\'ve Been (Instrumental)', genre: g
 					 {name: 'Strobe', genre: genres[2], album: albums[3]},
 					 {name: 'Out of Light', genre: genres[2], album: albums[4]},
 					 {name: 'You and Everyone', genre: genres[2], album: albums[3]}])
+
+user = User.create(login: "test", password_digest='1234')
