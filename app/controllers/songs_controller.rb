@@ -1,5 +1,9 @@
 class SongsController < ApplicationController
   def index
-  	@songs = S3_BUCKET.objects
+  	@songs = Song.all
+  end
+
+  def show
+  	#@songs =
   end
 end

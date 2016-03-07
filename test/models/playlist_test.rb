@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class PlaylistTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should not save without name" do
+  	playlist = Playlist.new
+  	assert_not playlist.save
+  end
 end

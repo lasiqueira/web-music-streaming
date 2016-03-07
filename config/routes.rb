@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  get 'playlists/new'
+
+  get 'playlists/create'
+
+  get 'playlists/show'
+
+  get 'playlists/edit'
+
+  get 'playlists/update'
+
+  get 'playlists/destroy'
+
+  get 'users/new'
+
+  get 'users/create'
+
   get 'songs/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
