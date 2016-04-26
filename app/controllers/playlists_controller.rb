@@ -1,27 +1,14 @@
 class PlaylistsController < ApplicationController
-  def new
-    @playlist = Playlist.new
-    respond_to do |format|
-      format.html
-      format.json{format :json => @playlist}
-    end
-  end
+  before_action :authenticate_user_from_token!
+
 
   def create
     @playlist = Playlist.new(params[:playlist])
     @playlist.save
   end
 
-  def show
+  def index
     #@playlist = Playlist.find(params[:playlist_id])
-    respond_to do |format|
-      render.html
-      render.json {render :json => @playlist}
-    end
-  end
-
-  def edit
-    @playlist = Playlist.new(params[:playlist])
     respond_to do |format|
       render.html
       render.json {render :json => @playlist}
