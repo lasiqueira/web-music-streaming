@@ -10,7 +10,7 @@ class PlaylistsController < ApplicationController
   end
 
   def show
-    @playlists = Playlist.includes(:user).where(:user => { id: params[:user_id] } )
+    @playlists = Playlist.includes(:user).where(:user => { id: params[:user_id] })
     render json: @playlists
   end
 
