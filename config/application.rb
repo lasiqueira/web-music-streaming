@@ -7,7 +7,9 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module Sistinttcc
+	
   class Application < Rails::Application
+  	config.api_only = true
     config.encoding = "utf-8"
     config.filter_parameters +=[:password]
 

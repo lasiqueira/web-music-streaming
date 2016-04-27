@@ -5,20 +5,21 @@ class PlaylistsController < ApplicationController
   def create
     @playlist = Playlist.new(params[:playlist])
     @playlist.save
+
+    render json: @playlist
   end
 
-  def index
-    #@playlist = Playlist.find(params[:playlist_id])
-    respond_to do |format|
-      render.html
-      render.json {render :json => @playlist}
-    end
+  def show
+    @playlists = Playlist.includes(:user).where(:user => { id: params[:user_id] } )
+    render json: @playlists
   end
 
   def update
     @playlist = Playlist.new(params[:playlist])
     
-    @playkist.save
+    @playlist.save
+
+    render json: @playlist
 
   end
 

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resource :login, only: [:create], controller: :sessions
     resources :users, only: [:create]
     resources :songs, only: [:index, :show]
-    resources :playlists, only: [:create, :update, :destroy, :index]
+    resources :playlists, only: [:create, :update, :destroy, :show]
   end
 
 end
