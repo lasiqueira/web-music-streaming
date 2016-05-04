@@ -11,6 +11,11 @@ class PlaylistsController < ApplicationController
 
   def show
     @playlists = Playlist.includes(:user).where(:user => { id: params[:user_id] })
+    @playlists.each do |playlist|
+      playlist.songs.each do |song|
+        song.get_download_url
+      end
+    end
     render json: @playlists
   end
 

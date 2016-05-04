@@ -1,33 +1,27 @@
 require 'test_helper'
 
 class PlaylistsControllerTest < ActionController::TestCase
-  test "should get new" do
-    get :new
+
+  test "should create playlist" do
+    assert_difference('Platlist.count') do
+      post :create, playlist: {email: 'testusername@test.com', username: 'Testusername', password:'123451'}
+    end
     assert_response :success
   end
 
-  test "should get create" do
-    get :create
+  test "should show user playlists" do
+    get(:show, {'user_id' => "1"})
+    assert_response :success
+    assert_not_nil assigns(:playlists)
+  end
+
+  test "should update playlist" do
+    post :update
     assert_response :success
   end
 
-  test "should get show" do
-    get :show
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit
-    assert_response :success
-  end
-
-  test "should get update" do
-    get :update
-    assert_response :success
-  end
-
-  test "should get destroy" do
-    get :destroy
+  test "should destroy playlist" do
+    post :destroy
     assert_response :success
   end
 

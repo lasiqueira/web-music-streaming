@@ -25,3 +25,5 @@ songs = Song.create([{name: 'I Know Where You\'ve Been (Instrumental)', genre: g
 					 {name: 'You and Everyone', genre: genres[2], album: albums[3]}])
 
 user = User.create(login: 'test', email: 'test@test.com', password:'1234')
+
+playlist = Playlist.create(name:'test playlist 1', user: user, songs: [songs[1], songs[2], songs[3])

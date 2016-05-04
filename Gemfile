@@ -9,6 +9,7 @@ gem 'devise', '~> 3.4.1'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'aws-sdk'
 gem 'thin'
+gem 'rack-cors'
 group :development, :test do
   gem 'byebug'
   gem 'dotenv-rails'

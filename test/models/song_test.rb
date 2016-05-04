@@ -10,4 +10,12 @@ class SongTest < ActiveSupport::TestCase
   	song = Song.find_by_name("Strobe")
   	assert_not_nil song
   end
+
+  test "get song url" do
+  	song = Song.find_by_name("Strobe")
+  	assert_not_nil song
+  	song.get_download_url
+
+  	assert_not_nil song.download_url
+  end
 end
