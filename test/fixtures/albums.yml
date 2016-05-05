@@ -1,7 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+album_one:
+  name: What I Tell Myself EP
+  artist: artist_one
 
-two:
-  name: MyString
+album_two:
+  name: We are yet but young in deed.
+  artist: artist_two
+
+album_three:
+  name: Inside
+  artist: artist_three
+
+album_four:
+  name: Division
+  artist: artist_four
+
+album_five:
+  name: To the Black Sea
+  artist: artist_five
+

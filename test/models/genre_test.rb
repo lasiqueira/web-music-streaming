@@ -10,4 +10,10 @@ class GenreTest < ActiveSupport::TestCase
   	genre = Genre.find_by_name("Rock")
   	assert_not_nil genre
   end
+
+  test "should save genre if all conditions are met" do
+    genre = Genre.new
+  	genre.name = "Test_genre"
+  	assert genre.save
+  end
 end

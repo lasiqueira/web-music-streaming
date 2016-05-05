@@ -1,7 +1,41 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+song_one:
+  name: I Know Where You've Been (Instrumental)
+  genre: genre_one
+  album: album_one
 
-two:
-  name: MyString
+song_two:
+  name: We'll Make Love Anew
+  genre: genre_one
+  album: album_two
+
+song_three:
+  name: Young @ Heart
+  genre: genre_one
+  album: album_two
+
+song_four:
+  name: Blue Night Dance
+  genre: genre_two
+  album: album_three
+
+song_five:
+  name: What's Up
+  genre: genre_two
+  album: album_three
+
+song_six:
+  name: Strobe
+  genre: genre_three
+  album: album_four
+
+song_seven:
+  name: Out of Light
+  genre: genre_three
+  album: album_five
+
+song_eight:
+  name: You and Everyone
+  genre: genre_three
+  album: album_four  

@@ -1,7 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+artist_one:
+  name: Forget the Whale
 
-two:
-  name: MyString
+artist_two:
+  name: The Agrarians
+
+artist_three:
+  name: Paolo Pavan
+
+artist_four:
+  name: PC-ONE
+
+artist_five:
+  name: Portrayal

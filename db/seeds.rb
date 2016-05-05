@@ -24,6 +24,6 @@ songs = Song.create([{name: 'I Know Where You\'ve Been (Instrumental)', genre: g
 					 {name: 'Out of Light', genre: genres[2], album: albums[4]},
 					 {name: 'You and Everyone', genre: genres[2], album: albums[3]}])
 
-user = User.create(login: 'test', email: 'test@test.com', password:'1234')
+user = User.create(username: 'test', email: 'test@test.com', password:'1234', password_confirmation:'1234')
 
-playlist = Playlist.create(name:'test playlist 1', user: user, songs: [songs[1], songs[2], songs[3])
+playlist = Playlist.create(name:'test playlist 1', user: user, songs: [songs[1], songs[2], songs[3]])

@@ -1,7 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-
-two:
-  name: MyString
+playlist_one:
+  name: playlist_one
+  user: user_one
+  songs: [song_one, song_two, song_three]

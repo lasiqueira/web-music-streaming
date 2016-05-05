@@ -10,11 +10,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'aws-sdk'
 gem 'thin'
 gem 'rack-cors'
+gem 'rake', '~>11.1.2'
+
+group :development do
+	gem 'web-console', '~> 2.0'
+end
 group :development, :test do
   gem 'byebug'
   gem 'dotenv-rails'
-  gem 'faker'
-  gem 'web-console', '~> 2.0'
+  gem 'faker'  
   gem 'spring'
 end
 
