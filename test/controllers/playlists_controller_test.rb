@@ -6,6 +6,7 @@ class PlaylistsControllerTest < ActionController::TestCase
     @user = users(:user_one)
     @user_two = users(:user_two)
     @playlist = playlists(:playlist_one)
+    @playlist_two = playlists(:playlist_two)
     @playlist.name = 'playlist_3'
 
     @request.headers["Content-type"] = "application/json"
@@ -35,6 +36,22 @@ class PlaylistsControllerTest < ActionController::TestCase
   test "should destroy playlist" do
     post :destroy, id: @playlist
     assert_response :success
+  end
+
+  test "should not allow to create playlist when it's a different user" do
+    
+    post :create, playlist: {name: 'playlist_two', user_id: @user_two, song_ids: [songs(:song_four), songs(:song_five), songs(:song_six)]}
+    assert_response 401
+  end
+
+  test "should not allow to destroy playlist when it's a different user" do
+    post :destroy, id: @playlist_two
+    assert_response 401
+  end
+
+  test "should not allow to update playlist when it's a different user" do
+    post :update, id:@playlist_two,  playlist: {id: @playlist_two, name: @playlist_two.name, user_id: @playlist_two.user, song_ids: @playlist_two.songs}
+    assert_response 401
   end
 
 end
