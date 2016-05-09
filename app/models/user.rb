@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_create :update_access_token!
+  
 	validates :username, presence: true
 	validates :username, uniqueness: true
 

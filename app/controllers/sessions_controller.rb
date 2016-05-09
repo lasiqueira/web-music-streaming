@@ -9,6 +9,10 @@ class SessionsController < ApplicationController
       invalid_login_attempt
     end
   end
+
+  def destroy
+    sign_out current_user
+  end
   
   private
     def invalid_login_attempt
@@ -16,5 +20,4 @@ class SessionsController < ApplicationController
       render json: {error: t('sessions_controller.invalid_login_attempt')}, status: :unprocessable_entity
     end
 
-  end
 end

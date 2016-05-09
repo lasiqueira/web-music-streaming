@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::API
-	respond_to :json
+	include AbstractController::Translation
+
+  respond_to :json
 
 	
   ## 
@@ -39,7 +41,7 @@ class ApplicationController < ActionController::API
   # Renders a 401 error
   def authentication_error
     # User's token is either invalid or not in the right format
-    render json: {error: t('application_controller.unauthorized')}, status: 401  # Authentication timeout
+    render json: {error: t('application_controller.unauthorized')}, status: 401 # Authentication timeout
   end
 end
-end
+

@@ -2,5 +2,5 @@
 
 playlist_one:
   name: playlist_one
-  user: user_one
+  user_id: 1
   songs: [song_one, song_two, song_three]

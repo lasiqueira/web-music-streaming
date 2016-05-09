@@ -21,7 +21,6 @@ class SongTest < ActiveSupport::TestCase
 
   test "get song url" do
   	song = songs(:song_one)
-
   	song.get_download_url
 
   	assert_not_nil song.download_url
