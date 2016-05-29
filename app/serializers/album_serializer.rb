@@ -1,4 +1,4 @@
 class AlbumSerializer < ActiveModel::Serializer
   attributes :id, :name
-  belongs_to :artist
+  has_one :artist
 end
