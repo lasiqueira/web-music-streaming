@@ -1,8 +1,7 @@
 import AppDispatcher from '../AppDispatcher.js';
-import AppConstants from '../constants/AppConstants.js';
+import {ActionTypes} from '../constants/AppConstants.js';
 import {EventEmitter} from 'events';
 
-const ActionTypes = AppConstants.ActionTypes;
 const CHANGE_EVENT = 'change';
 
 let _accessToken = sessionStorage.getItem('accessToken');
