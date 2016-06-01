@@ -15,11 +15,17 @@ body {
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    margin-top: 50px;
 }
 
 .search-wrapper{
 	margin-top: 50px;
 	margin-left: 330px;
 	
-	padding: 100px
+	padding: 100px;
+}
+
+.audio-div{
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
