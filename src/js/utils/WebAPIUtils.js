@@ -1,9 +1,10 @@
-import ServerActions from '../actions/ServerActions.js';
+import * as ServerActions from '../actions/ServerActions.js';
 import {APIEndpoints} from '../constants/AppConstants.js';
 import Request from 'superagent';
 
 function _getErrors(res) {
-  var errorMsgs = ["Something went wrong, please try again"];
+  let errorMsgs = ["Something went wrong, please try again"];
+  let json = null;
   if ((json = JSON.parse(res.text))) {
     if (json['errors']) {
       errorMsgs = json['errors'];
@@ -26,10 +27,10 @@ export function signup(email, username, password, passwordConfirmation) {
     .end(function(error, res) {
       if (res) {
         if (res.error) {
-          var errorMsgs = _getErrors(res);
+          const errorMsgs = _getErrors(res);
           ServerActions.receiveLogin(null, errorMsgs);
         } else {
-          json = JSON.parse(res.text);
+          const json = JSON.parse(res.text);
           ServerActions.receiveLogin(json, null);
         }
       }
@@ -43,10 +44,10 @@ export function login(email, password) {
     .end(function(error, res){
       if (res) {
         if (res.error) {
-          var errorMsgs = _getErrors(res);
+          const errorMsgs = _getErrors(res);
           ServerActions.receiveLogin(null, errorMsgs);
         } else {
-          json = JSON.parse(res.text);
+          const json = JSON.parse(res.text);
           ServerActions.receiveLogin(json, null);
         }
       }

@@ -1,9 +1,7 @@
 import React from "react";
-
 import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
-import Search from "../components/Search";
 import SessionStore from "../stores/SessionStore";
+import RouteStore from "../stores/RouteStore";
 
 
 function getStateFromStores() {
@@ -18,25 +16,25 @@ export default class MainApp extends React.Component {
 	constructor() {
 		super();
 		this.state = getStateFromStores();
+    this._onChange = this._onChange.bind(this);
 	}
 	componentDidMount() {
-    	SessionStore.addChangeListener(this._onChange);
-  	}
+  	SessionStore.addChangeListener(this._onChange);
+	}
 
-  	componentWillUnmount() {
-    	SessionStore.removeChangeListener(this._onChange);
-  	}
+	componentWillUnmount() {
+  	SessionStore.removeChangeListener(this._onChange);
+	}
 
-  	_onChange() {
-    	this.setState(getStateFromStores());
-  	}
+	_onChange() {
+  	this.setState(getStateFromStores());
+	}
 
 	render() {
 		return (
-			<div class="main-app">
+			<div class="container-fluid">
 				<Header isLoggedIn={this.state.isLoggedIn} email={this.state.email} />
-				<Sidebar />
-				<Search />
+				{this.props.children}
 			</div>
 		);
 	}

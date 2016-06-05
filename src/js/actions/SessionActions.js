@@ -1,6 +1,6 @@
 import AppDispatcher from "../AppDispatcher";
 import {ActionTypes} from "../constants/AppConstants.js";
-import WebAPIUtils from "../utils/WebAPIUtils";
+import * as WebAPIUtils from "../utils/WebAPIUtils";
 
 
 export function signup(email, username, password, passwordConfirmation) {

@@ -1,6 +1,6 @@
 import React, {PropTypes} from "react";
 import {Link} from "react-router"
-import SessionActions from "../actions/SessionActions";
+import * as SessionActions from "../actions/SessionActions";
 
 
 export default class Header extends React.Component {

@@ -38,7 +38,7 @@ class SessionStoreClass extends EventEmitter{
     return _errors;
   }
 
-};
+}
 
 const SessionStore = new SessionStoreClass();
 

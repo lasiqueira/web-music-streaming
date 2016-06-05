@@ -1,6 +1,6 @@
 export  const APIRoot = "http://pacific-scrubland-63293.herokuapp.com";
 
-export  const APIConstants = {
+export  const APIEndpoints = {
     LOGIN: APIRoot + "/login",
     SIGNUP: APIRoot + "/users",
     SONGS: APIRoot + "/songs",
