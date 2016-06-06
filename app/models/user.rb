@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 
   def update_access_token!
     self.access_token = generate_access_token
-    save
+    self.save
   end
 
   def generate_access_token
