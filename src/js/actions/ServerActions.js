@@ -9,4 +9,12 @@ export function receiveLogin(json, errors) {
   });
 };
 
+
+export function receiveSongs(json, errors) {
+  AppDispatcher.handleServerAction({
+    type: ActionTypes.SEARCH_RESPONSE,
+    json: json,
+    errors: errors
+  });
+};
   

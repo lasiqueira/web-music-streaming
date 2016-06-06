@@ -3,7 +3,6 @@ import React from "react";
 
 export default class ErrorNotice extends React.Component{
   render() {
-    console.log("here");
     return (
       <div class="list-group">
         <ul>

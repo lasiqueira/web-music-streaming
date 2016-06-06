@@ -21,8 +21,11 @@ export default class Signup extends React.Component {
   }
 
   _onChange() {
+    console.log("changed...");
     const errors = SessionStore.getErrors();
+    console.log("errors: " + errors);
     this.setState({errors});
+    console.log("this.state.errors" + this.state.errors);
   }
 
   _onSubmit(e) {
@@ -42,12 +45,15 @@ export default class Signup extends React.Component {
   }
 
   render() {
-    const errors = (this.state.errors.length > 0) ? (<ErrorNotice errors={this.state.errors}/>) : (<div></div>);
+    console.log("errors length: " + this.state.errors.length);
+    const errors = (this.state.errors.length > 0) ? (<ErrorNotice errors={this.state.errors} />) : (<div></div>);
+    console.log("errors: " + errors);
     return (
       <div class="session-wrapper container-fluid">
         <div class="row">
           <div class="col-xs-4 col-xs-offset-4">       
             {errors}
+            <ErrorNotice errors={this.state.errors} />
           </div>
         </div>
         <div class="row">
@@ -74,7 +80,7 @@ export default class Signup extends React.Component {
                 <label for="password-confirmation">Password Confirmation</label>
                 <input type="password" class="form-control" id="password-confirmation" placeholder="Password Confirmation" ref="passwordConfirmation" />
               </div>
-              <button type="submit" class="btn btn-default">Login</button>
+              <button type="submit" class="btn btn-default">Sign up</button>
             </form>
           </div>
         </div>

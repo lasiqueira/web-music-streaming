@@ -33,3 +33,11 @@ body {
 .session-wrapper{
 	margin-top: 50px;
 }
+
+.btn-player-control{
+	border-radius: 100%;
+}
+
+.search-results-wrapper{
+	margin-top: 50px;
+}

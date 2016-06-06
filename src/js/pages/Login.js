@@ -7,7 +7,7 @@ import ErrorNotice from "../components/ErrorNotice";
 export default class Login extends React.Component {
   constructor(){
     super();
-    this.state= {errors: []};
+    this.state = {errors: []};
     this._onSubmit = this._onSubmit.bind(this);
     this._onChange = this._onChange.bind(this);
   } 

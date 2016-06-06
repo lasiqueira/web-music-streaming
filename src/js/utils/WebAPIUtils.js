@@ -6,9 +6,14 @@ function _getErrors(res) {
   let errorMsgs = ["Something went wrong, please try again"];
   let json = null;
   if ((json = JSON.parse(res.text))) {
+    console.log(json);
     if (json['errors']) {
+      console.log("multiple errors");
+      console.log(json['errors']);
       errorMsgs = json['errors'];
     } else if (json['error']) {
+      console.log("one error");
+      console.log(json['error']);
       errorMsgs = [json['error']];
     }
   }
@@ -16,7 +21,7 @@ function _getErrors(res) {
 }
 
 export function signup(email, username, password, passwordConfirmation) {
-  Request.post(APIEndpoints.SINGUP)
+  Request.post(APIEndpoints.SIGNUP)
     .send({ user: { 
       email: email, 
       username: username,
@@ -27,10 +32,14 @@ export function signup(email, username, password, passwordConfirmation) {
     .end(function(error, res) {
       if (res) {
         if (res.error) {
+          console.log("res error: " + res.error);
           const errorMsgs = _getErrors(res);
+          console.log("errorMsgs: " + errorMsgs);
           ServerActions.receiveLogin(null, errorMsgs);
         } else {
+          console.log("signup worked");
           const json = JSON.parse(res.text);
+          console.log(json);
           ServerActions.receiveLogin(json, null);
         }
       }
@@ -54,6 +63,37 @@ export function login(email, password) {
     });
 };
 
+export function searchSongs(search) {
+  Request.get(APIEndpoints.SEARCH_SONGS)
+    .query({search: search})
+    .end(function(error, res){
+      if (res) {
+        if (res.error) {
+          const errorMsgs = _getErrors(res);
+          ServerActions.receiveSongs(null, errorMsgs);
+        } else {
+          const json = JSON.parse(res.text);
+          ServerActions.receiveSongs(json, null);
+        }
+      }
+    });
 
+};
+
+export function getAllSongs() {
+  Request.get(APIEndpoints.SONGS)
+    .end(function(error, res){
+      if (res) {
+        if (res.error) {
+          const errorMsgs = _getErrors(res);
+          ServerActions.receiveSongs(null, errorMsgs);
+        } else {
+          const json = JSON.parse(res.text);
+          ServerActions.receiveSongs(json, null);
+        }
+      }
+    });
+
+};
 
 
