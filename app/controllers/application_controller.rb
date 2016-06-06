@@ -1,5 +1,13 @@
 class ApplicationController < ActionController::API
 	include AbstractController::Translation
+   before_action :configure_permitted_parameters, if: :devise_controller?
+
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_in)        << :username
+    devise_parameter_sanitizer.for(:sign_up)        << :username
+    devise_parameter_sanitizer.for(:account_update) << :username
+  end
 
   respond_to :json
 
