@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.4'
 gem 'rails-api', '~> 0.4.0'
-gem 'active_model_serializers', '~> 0.9.5'
+gem 'active_model_serializers', '~> 0.10.0'
 gem 'devise', '~> 3.4.1'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'aws-sdk'

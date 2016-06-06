@@ -3,4 +3,5 @@ class SongSerializer < ActiveModel::Serializer
   has_one :album
   has_one :genre
   
+  
 end
