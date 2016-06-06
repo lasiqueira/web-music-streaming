@@ -6,6 +6,6 @@ class Song < ActiveRecord::Base
 	belongs_to :genre
 
 	def get_download_url
-		@download_url = S3_BUCKET.object(genre.name + '/' + name).public_url
+		self.download_url = S3_BUCKET.object(name + ".mp3").public_url
 	end
 end

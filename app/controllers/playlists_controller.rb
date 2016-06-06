@@ -5,7 +5,7 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.new(playlist_params)
     if authorized_user(@playlist.user.id)
       @playlist.save
-      render json: @playlist
+      render json: @playlist, include: ['songs']
     end
   end
 
@@ -17,7 +17,7 @@ class PlaylistsController < ApplicationController
           song.get_download_url
         end
       end
-      render json: @playlists
+      render json: @playlists, include: ['songs']
     end
   end
 
@@ -29,7 +29,7 @@ class PlaylistsController < ApplicationController
     @playlist.songs = changed_playlist.songs
     if authorized_user(@playlist.user.id)
       @playlist.save
-      render json: @playlist
+      render json: @playlist, include: ['songs']
     end
   end
 
