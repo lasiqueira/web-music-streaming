@@ -14,7 +14,7 @@ export default class MusicPlayer extends React.Component {
   }
   
   componentDidMount() {
-      SessionStore.addChangeListener(this._onChange);
+    SessionStore.addChangeListener(this._onChange);
   }
 
   componentWillUnmount() {

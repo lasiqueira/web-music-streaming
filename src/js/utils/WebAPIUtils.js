@@ -6,14 +6,9 @@ function _getErrors(res) {
   let errorMsgs = ["Something went wrong, please try again"];
   let json = null;
   if ((json = JSON.parse(res.text))) {
-    console.log(json);
     if (json['errors']) {
-      console.log("multiple errors");
-      console.log(json['errors']);
       errorMsgs = json['errors'];
     } else if (json['error']) {
-      console.log("one error");
-      console.log(json['error']);
       errorMsgs = [json['error']];
     }
   }
@@ -32,14 +27,10 @@ export function signup(email, username, password, passwordConfirmation) {
     .end(function(error, res) {
       if (res) {
         if (res.error) {
-          console.log("res error: " + res.error);
           const errorMsgs = _getErrors(res);
-          console.log("errorMsgs: " + errorMsgs);
           ServerActions.receiveLogin(null, errorMsgs);
         } else {
-          console.log("signup worked");
           const json = JSON.parse(res.text);
-          console.log(json);
           ServerActions.receiveLogin(json, null);
         }
       }

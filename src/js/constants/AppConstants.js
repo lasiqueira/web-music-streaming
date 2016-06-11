@@ -23,6 +23,13 @@ export  const ActionTypes = {
     
     //Search
     SEARCH_REQUEST: "SEARCH_REQUEST",
-    SEARCH_RESPONSE: "SEARCH_RESPONSE"
+    SEARCH_RESPONSE: "SEARCH_RESPONSE",
+
+    //Player
+    PLAY_SONG: "PLAY_SONG",
+
+    //Playlist
+    ADD_SONG: "ADD_SONG",
+    REMOVE_SONG: "REMOVE_SONG"
 
 };

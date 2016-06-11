@@ -7,7 +7,10 @@ import SearchResults from "./Search/SearchResults";
 export default class Search extends React.Component {
 	constructor(){
 		super();
-		this.state = {songs: []}
+		this.state = {
+			songs: [],
+			fetching: false
+		};
 		this._onChange = this._onChange.bind(this);
 		this._onClick = this._onClick.bind(this);
 	}
@@ -20,6 +23,8 @@ export default class Search extends React.Component {
   }
 	_onChange(){
 		const songs = SearchStore.getSongs();
+		const fetching = SearchStore.isFetching();
+		this.setState({fetching});
 		this.setState({songs});
 	}
 	_onClick(e){
@@ -32,6 +37,7 @@ export default class Search extends React.Component {
 	}
 	render() {
 		const searchResults = (this.state.songs.length > 0) ? (<SearchResults songs={this.state.songs} />) : (<div></div>);
+		const fetching = (this.state.fetching) ? (<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>) : (<div></div>)
 		return (
 			<div class="search-wrapper">
 				<div class="container-fluid">
@@ -51,6 +57,11 @@ export default class Search extends React.Component {
 	           							 </button>
 	       							</span>
        							</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-4 col-xs-offset-6 ">
+								{fetching}
 							</div>
 						</div>
 						<div class="row">

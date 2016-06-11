@@ -21,11 +21,8 @@ export default class Signup extends React.Component {
   }
 
   _onChange() {
-    console.log("changed...");
     const errors = SessionStore.getErrors();
-    console.log("errors: " + errors);
     this.setState({errors});
-    console.log("this.state.errors" + this.state.errors);
   }
 
   _onSubmit(e) {
@@ -45,9 +42,7 @@ export default class Signup extends React.Component {
   }
 
   render() {
-    console.log("errors length: " + this.state.errors.length);
     const errors = (this.state.errors.length > 0) ? (<ErrorNotice errors={this.state.errors} />) : (<div></div>);
-    console.log("errors: " + errors);
     return (
       <div class="session-wrapper container-fluid">
         <div class="row">

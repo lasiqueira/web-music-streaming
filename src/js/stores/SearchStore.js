@@ -5,6 +5,7 @@ import {EventEmitter} from 'events';
 const CHANGE_EVENT = 'change';
 let _songs = [];
 let _errors = [];
+let _fetching = false;
 
 class SearchStoreClass extends EventEmitter{
 
@@ -27,6 +28,9 @@ class SearchStoreClass extends EventEmitter{
   getErrors() {
     return _errors;
   }
+   isFetching() {
+    return _fetching;
+  }
 
 }
 
@@ -44,9 +48,13 @@ SearchStore.dispatchToken = AppDispatcher.register(function(payload) {
       if (action.errors) {
         _errors = action.errors;
       }
+      _fetching = false;
       SearchStore.emitChange();
       break;
-    
+    case ActionTypes.SEARCH_REQUEST:
+      _fetching = true;
+      SearchStore.emitChange();
+      break;
     default:
   }
   
