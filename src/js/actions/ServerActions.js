@@ -9,7 +9,6 @@ export function receiveLogin(json, errors) {
   });
 };
 
-
 export function receiveSongs(json, errors) {
   AppDispatcher.handleServerAction({
     type: ActionTypes.SEARCH_RESPONSE,
@@ -19,8 +18,18 @@ export function receiveSongs(json, errors) {
 };
   
 export function receivePlaylists(json, errors) {
+  console.log("ServerActions triggering receivePlaylists");
   AppDispatcher.handleServerAction({
     type: ActionTypes.RECEIVE_PLAYLISTS,
+    json: json,
+    errors: errors
+  });
+};
+
+
+export function receivePlaylist(json, errors) {
+  AppDispatcher.handleServerAction({
+    type: ActionTypes.RECEIVE_PLAYLIST,
     json: json,
     errors: errors
   });

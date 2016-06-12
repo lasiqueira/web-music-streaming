@@ -83,10 +83,32 @@ PlaylistStore.dispatchToken = AppDispatcher.register(function(payload) {
       }
       
       PlaylistStore.emitChange();
-      break;   
+      break; 
+
     case ActionTypes.CHANGE_PLAYLIST_NAME:
       _playlists[_activePlaylistIndex].name = action.playlistName;
       PlaylistStore.emitChange();
+      break;
+    
+    case ActionTypes.RECEIVE_PLAYLISTS:
+      if (action.json) {
+        const json = action.json;
+        json.forEach(function(playlist){
+          _playlists.push(playlist);
+        });
+      }
+      PlaylistStore.emitChange();
+      break;   
+
+    case ActionTypes.RECEIVE_PLAYLIST:
+      if (action.json) {
+        
+        _playlists[_activePlaylistIndex] = (action.json);
+      }
+      
+      PlaylistStore.emitChange();
+      break; 
+
     default:
   }
   

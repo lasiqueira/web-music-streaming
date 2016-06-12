@@ -87,14 +87,19 @@ export function getAllSongs() {
 };
 
 export function getUserPlaylists(userId) {
-  Request.get(APIEndpoints.PLAYLISTS+ '/' + storyId)
+  console.log("api getting user playlists...");
+  Request.get(APIEndpoints.PLAYLISTS+ '/' + userId)
     .set('Accept', 'application/json')
+    .set('Authorization', sessionStorage.getItem('accessToken'))
     .end(function(error, res){
       if (res) {
+        console.log(res);
         if (res.error) {
+          console.log("error: " + res.error);
           const errorMsgs = _getErrors(res);
           ServerActions.receivePlaylists(null, errorMsgs);
         } else {
+          console.log("text: " + res.text);
           const json = JSON.parse(res.text);
           ServerActions.receivePlaylists(json, null);
         }
@@ -110,44 +115,61 @@ export function removePlaylist(playlistId) {
       if (res) {
         if (res.error) {
           const errorMsgs = _getErrors(res);
-          ServerActions.receiveSongs(null, errorMsgs);
-        } else {
-          const json = JSON.parse(res.text);
-          ServerActions.receiveSongs(json, null);
+          ServerActions.receivePlaylist(null, errorMsgs);
         }
       }
   });
 };
 
 export function createPlaylist(playlist) {
-  Request.post(APIEndpoints.SONGS)
+  let songIds = [];
+  playlist.songs.forEach(function(song){
+    songIds.push(song.id);
+  });
+
+  Request.post(APIEndpoints.PLAYLISTS)
+    .send({ playlist: { 
+      name: playlist.name, 
+      user_id: sessionStorage.getItem('userId'),
+      song_ids: songIds
+    }})
     .set('Accept', 'application/json')
     .set('Authorization', sessionStorage.getItem('accessToken'))
     .end(function(error, res){
       if (res) {
         if (res.error) {
           const errorMsgs = _getErrors(res);
-          ServerActions.receiveSongs(null, errorMsgs);
+          ServerActions.receivePlaylist(null, errorMsgs);
         } else {
           const json = JSON.parse(res.text);
-          ServerActions.receiveSongs(json, null);
+          ServerActions.receivePlaylist(json, null);
         }
       }
   });
 };
 
 export function updatePlaylist(playlist) {
-  Request.post(APIEndpoints.PLAYLISTS + '/' + playlist.id)
+  let songIds = [];
+  playlist.songs.forEach(function(song){
+    songIds.push(song.id);
+  });
+
+  Request.put(APIEndpoints.PLAYLISTS + '/' + playlist.id)
+    .send({ playlist: { 
+      name: playlist.name, 
+      user_id: sessionStorage.getItem('userId'),
+      song_ids: songIds
+    }})
     .set('Accept', 'application/json')
     .set('Authorization', sessionStorage.getItem('accessToken'))
     .end(function(error, res){
       if (res) {
         if (res.error) {
           const errorMsgs = _getErrors(res);
-          ServerActions.receiveSongs(null, errorMsgs);
+          ServerActions.receivePlaylist(null, errorMsgs);
         } else {
           const json = JSON.parse(res.text);
-          ServerActions.receiveSongs(json, null);
+          ServerActions.receivePlaylist(json, null);
         }
       }
   });

@@ -39,7 +39,10 @@ PlayerStore.dispatchToken = AppDispatcher.register(function(payload) {
       }
       PlayerStore.emitChange();
       break;
-    
+    case ActionTypes.LOGOUT:
+      _currentSong = [];
+      break;
+
     default:
   }
   

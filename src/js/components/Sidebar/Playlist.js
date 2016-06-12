@@ -26,6 +26,14 @@ export default class Playlist extends React.Component {
   
   componentDidMount() {
     PlaylistStore.addChangeListener(this._onChange);
+    if(SessionStore.isLoggedIn()){
+        
+        //had to do this hack because I wasn't able to trigger the action here after login...
+        setTimeout(function (){
+          PlaylistActions.getUserPlaylists(SessionStore.getUserId());
+        }, 1000);
+        
+    }
   }
 
   componentWillUnmount() {
