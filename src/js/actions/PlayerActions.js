@@ -9,3 +9,15 @@ export function playSong(song) {
 };
 
   
+export function playAll(songs) {
+  AppDispatcher.handleViewAction({
+    type: ActionTypes.PLAY_ALL,
+    songs: songs
+  });
+};
+
+export function playNextSong() {
+  AppDispatcher.handleViewAction({
+    type: ActionTypes.PLAY_NEXT_SONG
+  });
+};

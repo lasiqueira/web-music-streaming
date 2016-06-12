@@ -21,6 +21,7 @@ export default class Playlist extends React.Component {
     this.removePlaylist = this.removePlaylist.bind(this);
     this.savePlaylist = this.savePlaylist.bind(this);
     this.changePlaylistName = this.changePlaylistName.bind(this);
+    this.playAll = this.playAll.bind(this);
     this.state = getStateFromStores();
   }
   
@@ -73,6 +74,10 @@ export default class Playlist extends React.Component {
 
   }
 
+  playAll(e){
+    PlayerActions.playAll(this.state.playlists[this.state.activePlaylistIndex].songs);
+  }
+
   render() {
     const disableControls = !SessionStore.isLoggedIn();
     const disablePrev = (this.state.activePlaylistIndex <= 0) ? true : false;
@@ -97,6 +102,11 @@ export default class Playlist extends React.Component {
         <div class="row">
           <div class="col-xs-12">
             <input ref="playlistName" id="PlaylistName" type="text" name="searchInput" class="form-control" placeholder="PlaylistName" value={this.state.playlists[this.state.activePlaylistIndex].name} onChange={this.changePlaylistName}/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-2 col-xs-offset-5">
+            <button class="tn btn-default btn-player-control glyphicon glyphicon-play" onClick={this.playAll}></button>
           </div>
         </div>  
         <br/>

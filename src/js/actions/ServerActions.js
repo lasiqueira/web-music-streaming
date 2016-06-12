@@ -18,7 +18,6 @@ export function receiveSongs(json, errors) {
 };
   
 export function receivePlaylists(json, errors) {
-  console.log("ServerActions triggering receivePlaylists");
   AppDispatcher.handleServerAction({
     type: ActionTypes.RECEIVE_PLAYLISTS,
     json: json,

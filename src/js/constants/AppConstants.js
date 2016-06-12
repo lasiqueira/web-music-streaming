@@ -27,6 +27,8 @@ export  const ActionTypes = {
 
     //Player
     PLAY_SONG: "PLAY_SONG",
+    PLAY_ALL: "PLAY_ALL",
+    PLAY_NEXT_SONG: "PLAY_NEXT_SONG",
 
     //Playlist
     ADD_SONG: "ADD_SONG",

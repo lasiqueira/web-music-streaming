@@ -30,7 +30,7 @@ class PlaylistStoreClass extends EventEmitter{
   getActivePlaylistIndex(){
     return _activePlaylistIndex;
   }
-  
+
   getErrors() {
     return _errors;
   }

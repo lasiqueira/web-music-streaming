@@ -87,19 +87,15 @@ export function getAllSongs() {
 };
 
 export function getUserPlaylists(userId) {
-  console.log("api getting user playlists...");
   Request.get(APIEndpoints.PLAYLISTS+ '/' + userId)
     .set('Accept', 'application/json')
     .set('Authorization', sessionStorage.getItem('accessToken'))
     .end(function(error, res){
       if (res) {
-        console.log(res);
         if (res.error) {
-          console.log("error: " + res.error);
           const errorMsgs = _getErrors(res);
           ServerActions.receivePlaylists(null, errorMsgs);
         } else {
-          console.log("text: " + res.text);
           const json = JSON.parse(res.text);
           ServerActions.receivePlaylists(json, null);
         }
