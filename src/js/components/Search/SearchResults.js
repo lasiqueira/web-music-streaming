@@ -1,15 +1,22 @@
 import React from "react";
-import * as PlayerActions from "../../actions/PlayerActions"
+import * as PlayerActions from "../../actions/PlayerActions";
+import * as PlaylistActions from "../../actions/PlaylistActions";
 
 export default class SearchResults extends React.Component{
   constructor(){
     super();
     this.playSong = this.playSong.bind(this);
+    this.addSongToPlaylist = this.addSongToPlaylist.bind(this);
   }
 
   playSong(e){
     const song = this.props.songs[e.target.value];
     PlayerActions.playSong(song);
+  }
+
+  addSongToPlaylist(e){
+    const song = this.props.songs[e.target.value];
+    PlaylistActions.addSong(song);
   }
 
   render() {
@@ -34,7 +41,7 @@ export default class SearchResults extends React.Component{
                     <td>{song.genre.name}</td>
                     <td>
                         <button value={index} onClick={e => that.playSong(e)} class="btn btn-default btn-player-control glyphicon glyphicon-play" ></button>
-                        <button value={index} class="btn btn-default btn-player-control glyphicon glyphicon-plus"></button>
+                        <button value={index} onClick={e => that.addSongToPlaylist(e)} class="btn btn-default btn-player-control glyphicon glyphicon-plus"></button>
                       </td>
                   </tr>  
                 ]

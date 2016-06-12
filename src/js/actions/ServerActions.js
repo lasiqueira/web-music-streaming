@@ -18,3 +18,10 @@ export function receiveSongs(json, errors) {
   });
 };
   
+export function receivePlaylists(json, errors) {
+  AppDispatcher.handleServerAction({
+    type: ActionTypes.RECEIVE_PLAYLISTS,
+    json: json,
+    errors: errors
+  });
+};

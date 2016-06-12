@@ -34,7 +34,7 @@ export function signup(email, username, password, passwordConfirmation) {
           ServerActions.receiveLogin(json, null);
         }
       }
-    });
+  });
 };
 
 export function login(email, password) {
@@ -51,7 +51,7 @@ export function login(email, password) {
           ServerActions.receiveLogin(json, null);
         }
       }
-    });
+  });
 };
 
 export function searchSongs(search) {
@@ -67,12 +67,12 @@ export function searchSongs(search) {
           ServerActions.receiveSongs(json, null);
         }
       }
-    });
-
+  });
 };
 
 export function getAllSongs() {
   Request.get(APIEndpoints.SONGS)
+    .set('Accept', 'application/json')
     .end(function(error, res){
       if (res) {
         if (res.error) {
@@ -83,8 +83,75 @@ export function getAllSongs() {
           ServerActions.receiveSongs(json, null);
         }
       }
-    });
-
+  });
 };
+
+export function getUserPlaylists(userId) {
+  Request.get(APIEndpoints.PLAYLISTS+ '/' + storyId)
+    .set('Accept', 'application/json')
+    .end(function(error, res){
+      if (res) {
+        if (res.error) {
+          const errorMsgs = _getErrors(res);
+          ServerActions.receivePlaylists(null, errorMsgs);
+        } else {
+          const json = JSON.parse(res.text);
+          ServerActions.receivePlaylists(json, null);
+        }
+      }
+  });
+};
+
+export function removePlaylist(playlistId) {
+  Request.delete(APIEndpoints.PLAYLISTS + '/' + playlistId)
+    .set('Accept', 'application/json')
+    .set('Authorization', sessionStorage.getItem('accessToken'))
+    .end(function(error, res){
+      if (res) {
+        if (res.error) {
+          const errorMsgs = _getErrors(res);
+          ServerActions.receiveSongs(null, errorMsgs);
+        } else {
+          const json = JSON.parse(res.text);
+          ServerActions.receiveSongs(json, null);
+        }
+      }
+  });
+};
+
+export function createPlaylist(playlist) {
+  Request.post(APIEndpoints.SONGS)
+    .set('Accept', 'application/json')
+    .set('Authorization', sessionStorage.getItem('accessToken'))
+    .end(function(error, res){
+      if (res) {
+        if (res.error) {
+          const errorMsgs = _getErrors(res);
+          ServerActions.receiveSongs(null, errorMsgs);
+        } else {
+          const json = JSON.parse(res.text);
+          ServerActions.receiveSongs(json, null);
+        }
+      }
+  });
+};
+
+export function updatePlaylist(playlist) {
+  Request.post(APIEndpoints.PLAYLISTS + '/' + playlist.id)
+    .set('Accept', 'application/json')
+    .set('Authorization', sessionStorage.getItem('accessToken'))
+    .end(function(error, res){
+      if (res) {
+        if (res.error) {
+          const errorMsgs = _getErrors(res);
+          ServerActions.receiveSongs(null, errorMsgs);
+        } else {
+          const json = JSON.parse(res.text);
+          ServerActions.receiveSongs(json, null);
+        }
+      }
+  });
+};
+
 
 

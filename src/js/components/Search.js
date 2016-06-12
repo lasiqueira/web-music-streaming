@@ -42,13 +42,13 @@ export default class Search extends React.Component {
 			<div class="search-wrapper">
 				<div class="container-fluid">
 						<div class="row">
-							<div class="col-xs-4 col-xs-offset-4">
+							<div class="col-xs-6 col-xs-offset-3">
 								<p>Tip: You can search songs by name, artist, album or genre</p>
 							</div>
 						</div>
 						<br/>
 						<div class="row">			
-							<div class="col-xs-4 col-xs-offset-4 ">
+							<div class="col-xs-6 col-xs-offset-2 ">
 								<div class="input-group">
 									<input ref="searchField" id="searchInput" type="text" name="searchInput" class="form-control" placeholder="Search..."/>
 									<span class="input-group-btn">
@@ -60,7 +60,7 @@ export default class Search extends React.Component {
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-xs-4 col-xs-offset-6 ">
+							<div class="col-xs-4 col-xs-offset-5 ">
 								{fetching}
 							</div>
 						</div>

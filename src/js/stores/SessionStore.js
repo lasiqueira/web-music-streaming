@@ -6,6 +6,7 @@ const CHANGE_EVENT = 'change';
 
 let _accessToken = sessionStorage.getItem('accessToken');
 let _email = sessionStorage.getItem('email');
+let _userId = sessionStorage.getItem('userId');
 let _errors = [];
 
 class SessionStoreClass extends EventEmitter{
@@ -34,6 +35,10 @@ class SessionStoreClass extends EventEmitter{
     return _email;
   }
 
+  getUserId() {
+    return _userId;
+  }
+  
   getErrors() {
     return _errors;
   }
@@ -51,8 +56,10 @@ SessionStore.dispatchToken = AppDispatcher.register(function(payload) {
       if (action.json && action.json.access_token) {
         _accessToken = action.json.access_token;
         _email = action.json.email;
+        _userId = action.json.user_id;
         sessionStorage.setItem('accessToken', _accessToken);
         sessionStorage.setItem('email', _email);
+        sessionStorage.setItem('userId', _userId);
       }
       if (action.errors) {
         _errors = action.errors;
@@ -65,6 +72,7 @@ SessionStore.dispatchToken = AppDispatcher.register(function(payload) {
       _email = null;
       sessionStorage.removeItem('accessToken');
       sessionStorage.removeItem('email');
+      sessionStorage.removeItem('userId');
       SessionStore.emitChange();
       break;
 

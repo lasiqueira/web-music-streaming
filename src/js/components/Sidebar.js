@@ -1,6 +1,6 @@
 import React from "react";
 import Player from './Sidebar/Player';
-
+import Playlist from './Sidebar/Playlist';
 
 export default class Sidebar extends React.Component {
 
@@ -8,6 +8,7 @@ export default class Sidebar extends React.Component {
 		return (
 			<div class="sidebar-wrapper">
 					<Player />
+          <Playlist />
 			</div>
 		)
 	}
