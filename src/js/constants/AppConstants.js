@@ -1,4 +1,4 @@
-export  const APIRoot = "http://pacific-scrubland-63293.herokuapp.com";
+export  const APIRoot = "https://pacific-scrubland-63293.herokuapp.com";
 
 export  const APIEndpoints = {
     LOGIN: APIRoot + "/login",
