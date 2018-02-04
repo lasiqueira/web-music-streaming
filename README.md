@@ -1,4 +1,4 @@
-# SISINTTCC #
+# SISINTTCC
 
 Music streaming Web API written in Ruby/RoR.
 
@@ -15,14 +15,14 @@ Tech stack:
 
 The objective of this project is learning and using it as a school project.
 
-##Installation##
+## Installation
 * `bundle install`
 * `rake db:create`
 * `rake db:migrate`
 * `rake db:seed`
 * `rails s`
 
-##Usage##
+## Usage
 
 This backend API was made to be used alongside a separate frontend app. But you can run the GET/POST/PUT/DELETE manually if you wish so. You can make most of the calls without a user token. The only calls you need the token is for /playlists. You should send the token in the request header as `Authorization: token`. The response for the API calls is in the JSON format.
 
