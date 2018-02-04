@@ -1,4 +1,4 @@
-# SISINTTCC-FRONT #
+# SISINTTCC-FRONT
 
 Music streaming Web page written in React.
 
@@ -19,11 +19,11 @@ Tech stack:
 
 The objective of this project is learning and using it as a school project.
 
-##Installation##
+## Installation
 * `npm install`
 * `npm run dev`
 
-##Usage##
+## Usage
 
 After going through the installation steps, you should be able to run the application by going to `http://localhost:8080/`.
 
