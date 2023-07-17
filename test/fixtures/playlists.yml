@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+playlist_one:
+  name: playlist_one
+  user_id: 1
+  songs: [song_one, song_two, song_three]
+
+playlist_two:
+  name: playlist_two
+  user_id: 2
+  songs: [song_one, song_two, song_three]

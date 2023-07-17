@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+genre_one:
+  name: Blues
+
+genre_two:
+  name: Jazz
+
+genre_three:
+  name: Rock
+
