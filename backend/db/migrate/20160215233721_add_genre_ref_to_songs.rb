@@ -1,4 +1,4 @@
-class AddGenreRefToSongs < ActiveRecord::Migration
+class AddGenreRefToSongs < ActiveRecord::Migration[4.2]
   def change
     add_reference :songs, :genre, index: true, foreign_key: true
   end

@@ -1,29 +1,37 @@
+# Example catalog. The actual audio files must exist in the S3 bucket as
+# "<song name>.mp3" (see README). Safe to run multiple times.
 
-genres = Genre.create([{name: 'Blues'},
-					   {name: 'Jazz'},
-					   {name: 'Rock'}])
+genres = %w[Blues Jazz Rock].to_h { |name| [ name, Genre.find_or_create_by!(name: name) ] }
 
-artists = Artist.create([{name: 'Forget the Whale'},
-						 {name: 'The Agrarians'}, 
-						 {name: 'Paolo Pavan'}, 
-						 {name: 'PC-ONE'}, 
-						 {name: 'Portrayal'}]) 
+albums = {
+  "What I Tell Myself EP" => "Forget the Whale",
+  "We are yet but young in deed." => "The Agrarians",
+  "Inside" => "Paolo Pavan",
+  "Division" => "PC-ONE",
+  "To the Black Sea" => "Portrayal"
+}.to_h do |album_name, artist_name|
+  artist = Artist.find_or_create_by!(name: artist_name)
+  [ album_name, Album.find_or_create_by!(name: album_name, artist: artist) ]
+end
 
-albums = Album.create([{name: 'What I Tell Myself EP', artist: artists[0]}, 
-					   {name: 'We are yet but young in deed.', artist: artists[1]},
-					   {name: 'Inside', artist: artists[2]},
-					   {name: 'Division', artist: artists[3]},
-					   {name: 'To the Black Sea', artist: artists[4]}])
+songs = [
+  [ "I Know Where You've Been (Instrumental)", "Blues", "What I Tell Myself EP" ],
+  [ "We'll Make Love Anew", "Blues", "We are yet but young in deed." ],
+  [ "Young @ Heart", "Blues", "We are yet but young in deed." ],
+  [ "Blue Night Dance", "Jazz", "Inside" ],
+  [ "What's Up", "Jazz", "Inside" ],
+  [ "Strobe", "Rock", "Division" ],
+  [ "Out of Light", "Rock", "To the Black Sea" ],
+  [ "You and Everyone", "Rock", "Division" ]
+].map do |name, genre, album|
+  Song.find_or_create_by!(name: name, genre: genres.fetch(genre), album: albums.fetch(album))
+end
 
-songs = Song.create([{name: 'I Know Where You\'ve Been (Instrumental)', genre: genres[0], album: albums[0]},
-					 {name: 'We\'ll Make Love Anew', genre: genres[0], album: albums[1]},
-					 {name: 'Young @ Heart', genre: genres[0], album: albums[1]},
-					 {name: 'Blue Night Dance', genre: genres[1], album: albums[2]},
-					 {name: 'What\'s Up', genre: genres[1], album: albums[2]},
-					 {name: 'Strobe', genre: genres[2], album: albums[3]},
-					 {name: 'Out of Light', genre: genres[2], album: albums[4]},
-					 {name: 'You and Everyone', genre: genres[2], album: albums[3]}])
+user = User.find_or_create_by!(email: "test@test.com") do |u|
+  u.username = "test"
+  u.password = u.password_confirmation = "password"
+end
 
-user = User.create(username: 'test', email: 'test@test.com', password:'1234', password_confirmation:'1234')
-
-playlist = Playlist.create(name:'test playlist 1', user: user, songs: [songs[1], songs[2], songs[3]])
+Playlist.find_or_create_by!(name: "test playlist 1", user: user) do |playlist|
+  playlist.songs = songs[1..3]
+end

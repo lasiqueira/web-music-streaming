@@ -12,18 +12,15 @@ class SongTest < ActiveSupport::TestCase
   end
 
 
-  test "should find by all associations" do
-  	songs = Song.includes(:genre, album: :artist).where("lower(name) LIKE '%?%' OR lower(genre.name) LIKE '%?%' OR lower(artist.name) LIKE '%?%' OR lower(album.name) LIKE '%?%'",
-  														 'rock', 'rock', 'rock', 'rock')
-
-  	assert_not_nil songs
+  test "searches by song, genre, artist and album name" do
+    assert_equal 3, Song.search("rock").count
+    assert_equal [ "Strobe" ], Song.search("STROBE").pluck(:name)
+    assert_equal 0, Song.search("%").count, "LIKE wildcards in the term are escaped"
   end
 
-  test "get song url" do
-  	song = songs(:song_one)
-  	song.get_download_url
-
-  	assert_not_nil song.download_url
+  test "download url points at the song in S3" do
+    song = songs(:song_three)
+    assert_equal "https://songs.s3.sa-east-1.amazonaws.com/Young%20%40%20Heart.mp3", song.download_url
   end
 
   test "should save song if all conditions are met" do
