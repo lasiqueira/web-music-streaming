@@ -1,0 +1,48 @@
+:root {
+  --app-navbar-height: 57px;
+}
+
+body {
+  background-color: var(--bs-secondary-bg);
+}
+
+.min-w-0 {
+  min-width: 0;
+}
+
+.icon-btn {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.song-cell {
+  min-width: 0;
+  word-break: break-word;
+}
+
+/* Mobile: keep the player visible while scrolling search results / playlist. */
+.player-card {
+  position: sticky;
+  top: calc(var(--app-navbar-height) + 0.5rem);
+  z-index: 1010;
+}
+
+/* Desktop: the whole sidebar sticks and scrolls on its own. */
+@media (min-width: 992px) {
+  .player-card {
+    position: static;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: calc(var(--app-navbar-height) + 1rem);
+    max-height: calc(100vh - var(--app-navbar-height) - 2rem);
+    overflow-y: auto;
+    padding-bottom: 0.25rem;
+  }
+}

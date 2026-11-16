@@ -17,7 +17,7 @@ class UserTest < ActiveSupport::TestCase
   	user = User.new
   	user.username = "test"
   	user.email = "testy@test.com"
-    user.password = "1234" 
+    user.password = "password"
   	assert_not user.save
   end
 
@@ -26,7 +26,7 @@ class UserTest < ActiveSupport::TestCase
     user = User.new
     user.username = "testy"
     user.email = "test@test.com"
-    user.password = "1234" 
+    user.password = "password"
     assert_not user.save
   end
 
@@ -34,7 +34,13 @@ class UserTest < ActiveSupport::TestCase
     user = User.new
     user.username = "testyy"
     user.email = "testyy@test.com"
-    user.password = "1234" 
+    user.password = "password"
     assert user.save
+  end
+
+  test "password must have at least 8 characters" do
+    user = User.new(username: "shorty", email: "shorty@test.com", password: "1234567")
+    assert_not user.save
+    assert_includes user.errors.full_messages, "Password is too short (minimum is 8 characters)"
   end
 end

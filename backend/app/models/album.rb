@@ -1,4 +1,5 @@
-class Album < ActiveRecord::Base
-	validates :name, presence: true
-	belongs_to :artist
+class Album < ApplicationRecord
+  belongs_to :artist, optional: true
+
+  validates :name, presence: true
 end

@@ -1,18 +1,21 @@
-var path = require('path');
-var express = require('express');
-var app = express();
-var PORT = process.env.PORT || 8080
+// Minimal production server: serves the Vite build output in ./dist.
+// Run `npm run build` first (hosting platforms like Heroku do this automatically).
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import express from "express";
 
-app.use(express.static(path.join(__dirname, 'src')));
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const distDir = path.join(__dirname, "dist");
+const PORT = process.env.PORT || 8080;
 
-app.get('/', function(request, response) {
-  response.sendFile(__dirname + '/src/index.html')
-});
+const app = express();
 
-app.listen(PORT, function(error) {
+app.use(express.static(distDir));
+
+app.listen(PORT, (error) => {
   if (error) {
     console.error(error);
-  } else {
-    console.info("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+    process.exit(1);
   }
+  console.info(`==> Listening on port ${PORT}. Visit http://localhost:${PORT}/ in your browser.`);
 });

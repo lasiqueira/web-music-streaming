@@ -1,4 +1,3 @@
-class Genre < ActiveRecord::Base
-	validates :name, presence: true
-
+class Genre < ApplicationRecord
+  validates :name, presence: true
 end
